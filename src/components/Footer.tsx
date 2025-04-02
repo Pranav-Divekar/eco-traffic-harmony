@@ -13,11 +13,11 @@ const Footer = () => {
               <div className="h-3 w-3 rounded-full bg-eco"></div>
             </div>
           </div>
-          <span className="text-sm font-medium">Smart Traffic Management System</span>
+          <span className="text-sm font-medium">Pune Traffic Management System</span>
         </div>
         
         <div className="text-sm text-muted-foreground text-center md:text-left mb-4 md:mb-0">
-          Built for reducing urban congestion and air pollution
+          Built for reducing urban congestion and air pollution in Pune
         </div>
         
         <div className="flex items-center gap-4">

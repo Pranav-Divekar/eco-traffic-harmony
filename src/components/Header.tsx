@@ -14,7 +14,7 @@ const Header = () => {
             </div>
           </div>
           <span className="font-semibold text-xl">
-            Smart Traffic <span className="text-eco">Management</span> System
+            Pune <span className="text-eco">Traffic</span> Management System
           </span>
         </div>
         <div className="flex items-center gap-4">

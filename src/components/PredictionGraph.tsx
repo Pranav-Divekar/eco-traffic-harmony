@@ -34,14 +34,29 @@ const PredictionGraph = () => {
     return labels;
   };
   
-  // Generate data points with predictions
+  // Generate Pune-specific traffic data with predictions
   const generateGraphData = () => {
     const dataPointCount = timeframe === '1h' ? 12 : timeframe === '24h' ? 24 : 7;
     const times = generateTimeLabels(dataPointCount, timeframe);
     
     // Historical data (already happened)
     const actualData = times.map((time, index) => {
-      const baseValue = 30 + Math.sin(index / 2) * 10;
+      // Create a Pune traffic pattern with morning and evening peaks
+      let baseValue = 30;
+      
+      // Morning peak (around 9-10 AM)
+      if (time.includes("09:") || time.includes("10:")) {
+        baseValue += 25;
+      }
+      // Evening peak (around 6-7 PM)
+      else if (time.includes("18:") || time.includes("19:")) {
+        baseValue += 30;
+      }
+      // Midday moderate traffic
+      else if (time.includes("13:") || time.includes("14:")) {
+        baseValue += 15;
+      }
+      
       const randomVariation = Math.random() * 10 - 5;
       return {
         time,
@@ -57,7 +72,14 @@ const PredictionGraph = () => {
     
     const predictionData = predictionTimes.map((time, index) => {
       // Prediction should follow the trend but with greater uncertainty
-      const trend = (index + 1) * 2 * (Math.random() > 0.5 ? 1 : -1);
+      let trendFactor = 1;
+      
+      // Evening peak predictions should show increasing trend
+      if (time.includes("17:") || time.includes("18:") || time.includes("19:")) {
+        trendFactor = 2;
+      }
+      
+      const trend = (index + 1) * trendFactor * (Math.random() > 0.3 ? 1 : -1);
       return {
         time,
         value: Math.round(lastValue + trend),
@@ -81,10 +103,10 @@ const PredictionGraph = () => {
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <div>
           <CardTitle>Traffic Prediction</CardTitle>
-          <CardDescription>LSTM model predictions</CardDescription>
+          <CardDescription>Based on Pune historical patterns</CardDescription>
         </div>
         <div className="flex items-center gap-2">
-          <Badge variant="outline" className="bg-city-dark/10 text-city-dark">ML Powered</Badge>
+          <Badge variant="outline" className="bg-city-dark/10 text-city-dark">Smart Predictions</Badge>
           <Select value={timeframe} onValueChange={setTimeframe}>
             <SelectTrigger className="w-24">
               <SelectValue />
@@ -168,11 +190,11 @@ const PredictionGraph = () => {
         <div className="mt-4 flex items-center justify-center gap-4">
           <div className="flex items-center gap-2">
             <span className="h-2 w-4 bg-eco rounded"></span>
-            <span className="text-xs">Actual</span>
+            <span className="text-xs">Current</span>
           </div>
           <div className="flex items-center gap-2">
             <span className="h-2 w-4 bg-city-dark rounded"></span>
-            <span className="text-xs">Prediction</span>
+            <span className="text-xs">Predicted</span>
           </div>
         </div>
       </CardContent>

@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -7,30 +8,43 @@ const TrafficHeatmap = () => {
   const [heatmapData, setHeatmapData] = useState<number[][]>([]);
   const gridSize = 10;
   
-  // Generate random heatmap data
+  // Generate Pune-inspired traffic heatmap data
   const generateHeatmapData = () => {
     const newData: number[][] = [];
     
-    // Create a pattern that resembles realistic traffic congestion
+    // Create a pattern that resembles Pune's traffic congestion
     for (let i = 0; i < gridSize; i++) {
       const row: number[] = [];
       for (let j = 0; j < gridSize; j++) {
-        // Create a more realistic pattern with higher congestion in the center
+        // Higher congestion in city center and key junctions (represented in center and specific points)
         const distanceFromCenter = Math.sqrt(
           Math.pow((i - gridSize / 2), 2) + Math.pow((j - gridSize / 2), 2)
         );
         
-        // Add some randomness but keep the pattern centered
+        // Base congestion pattern
         let value = 100 - (distanceFromCenter * 15);
         
-        // Add some random hotspots
-        if (Math.random() < 0.1) {
+        // Simulate Pune's key congestion points (major intersections)
+        // Shivaji Nagar/FC Road area
+        if ((i === 3 && j === 3) || (i === 3 && j === 4)) {
+          value += 30;
+        }
+        // Hinjewadi IT Park area
+        if ((i === 1 && j === 8) || (i === 2 && j === 8)) {
           value += 40;
         }
+        // Hadapsar/Magarpatta area
+        if ((i === 7 && j === 7) || (i === 8 && j === 7)) {
+          value += 35;
+        }
+        // Swargate area
+        if ((i === 5 && j === 2) || (i === 6 && j === 2)) {
+          value += 25;
+        }
         
-        // Add roads with higher traffic
+        // Main roads (central horizontal and vertical lines)
         if (i === Math.floor(gridSize / 2) || j === Math.floor(gridSize / 2)) {
-          value += 20;
+          value += 15;
         }
         
         // Clamp values
@@ -43,7 +57,7 @@ const TrafficHeatmap = () => {
     return newData;
   };
   
-  // Get color based on value
+  // Get color based on congestion value
   const getHeatmapColor = (value: number) => {
     if (value < 25) return 'bg-green-500/30';
     if (value < 50) return 'bg-green-500/60';
@@ -79,11 +93,11 @@ const TrafficHeatmap = () => {
   }, []);
   
   return (
-    <Card>
+    <Card className="h-full">
       <CardHeader className="flex flex-row items-center justify-between pb-2">
         <div>
-          <CardTitle>Traffic Heatmap</CardTitle>
-          <CardDescription>Real-time congestion visualization</CardDescription>
+          <CardTitle>Pune Traffic Heatmap</CardTitle>
+          <CardDescription>Real-time congestion visualization based on traffic data</CardDescription>
         </div>
         <Badge variant="outline" className="flex items-center gap-1">
           <Timer className="h-3 w-3" /> Live
@@ -119,6 +133,10 @@ const TrafficHeatmap = () => {
             <span className="h-3 w-3 block bg-red-500/90 rounded-sm"></span>
             <span className="text-xs">Severe</span>
           </div>
+        </div>
+
+        <div className="mt-4 text-xs text-muted-foreground">
+          <p>*Visualizing high congestion areas in key Pune locations including Shivaji Nagar, Hinjewadi IT Park, Hadapsar, and Swargate</p>
         </div>
       </CardContent>
     </Card>
