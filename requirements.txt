@@ -1,0 +1,13 @@
+
+# Python dependencies for the Smart Traffic Management System
+numpy>=1.19.0
+pandas>=1.0.0
+matplotlib>=3.3.0
+scikit-learn>=0.23.0
+tensorflow>=2.4.0
+# For data preprocessing and visualization
+seaborn>=0.11.0
+# For handling time series data
+statsmodels>=0.12.0
+# For API requests to fetch real-time data
+requests>=2.25.0
