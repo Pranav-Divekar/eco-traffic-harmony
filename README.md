@@ -1,73 +1,77 @@
-# Welcome to your Lovable project
 
-## Project info
+# Smart Traffic Management System
 
-**URL**: https://lovable.dev/projects/48d61894-474c-48ad-a2f6-1662177c0fc6
+An AI-powered traffic management system for reducing urban congestion and air pollution through intelligent traffic control.
 
-## How can I edit this code?
+## Project Overview
 
-There are several ways of editing your application.
+This Smart Traffic Management System harnesses cutting-edge IoT sensors, real-time data analytics, and adaptive Machine Learning (ML) techniques—including Reinforcement Learning (RL)—to optimize traffic signal timings. By analyzing both historical and live data, the system dynamically adjusts traffic flows, reduces vehicle idling, and minimizes fuel consumption and emissions.
 
-**Use Lovable**
+## Key Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/48d61894-474c-48ad-a2f6-1662177c0fc6) and start prompting.
+- **Real-time Traffic Simulation**: Interactive visualization of traffic flow with AI-optimized signal control
+- **Traffic Heatmap**: Visual representation of congestion across the urban area
+- **Predictive Analytics**: LSTM-based forecasting of traffic conditions
+- **Adaptive Traffic Control**: Reinforcement learning algorithms for dynamic signal optimization
+- **System Monitoring**: Dashboard for tracking key performance indicators
 
-Changes made via Lovable will be committed automatically to this repo.
+## Technology Stack
 
-**Use your preferred IDE**
+- **Frontend**: React, TypeScript, Tailwind CSS
+- **Data Visualization**: Custom SVG charts and simulations
+- **AI Models**: Python implementation of LSTM and DQN reinforcement learning
+- **Data Processing**: NumPy, Pandas, TensorFlow
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## System Architecture
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The system is built on three core components:
 
-Follow these steps:
+1. **Data Collection & Processing Layer**: Gathers and normalizes traffic data from various sources
+2. **AI Modeling Layer**: Applies machine learning algorithms to predict and optimize traffic patterns
+3. **Control & Visualization Layer**: Provides interfaces for traffic operators and automated control systems
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+## Getting Started
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### Prerequisites
 
-# Step 3: Install the necessary dependencies.
-npm i
+- Node.js 16+ for the frontend application
+- Python 3.8+ with TensorFlow 2.x for the ML models
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/smart-traffic-management.git
+cd smart-traffic-management
+
+# Install frontend dependencies
+npm install
+
+# Start the frontend development server
 npm run dev
+
+# For the Python models (optional)
+cd src/pythonModel
+pip install -r requirements.txt
 ```
 
-**Edit a file directly in GitHub**
+## Usage
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Access the dashboard through the browser at `http://localhost:8080`
+- Explore the traffic simulation by toggling the play/pause button
+- Adjust AI control parameters to see how they affect traffic flow
+- View the system architecture diagram to understand how components interact
 
-**Use GitHub Codespaces**
+## Contributing
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-## What technologies are used for this project?
+## License
 
-This project is built with .
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Acknowledgments
 
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/48d61894-474c-48ad-a2f6-1662177c0fc6) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes it is!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+- Delhi Open Transit Data for providing GTFS-format datasets
+- Research papers on traffic optimization using reinforcement learning
+- Smart city initiatives that inspired this project
