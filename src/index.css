@@ -95,6 +95,12 @@
   }
 }
 
+@layer utilities {
+  .stroke-dashed {
+    stroke-dasharray: 5, 5;
+  }
+}
+
 @layer components {
   .traffic-grid {
     background-size: 40px 40px;
